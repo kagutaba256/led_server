@@ -5,10 +5,4 @@ module.exports = () => {
   setTimeout(() => {
     board.speaker.writeSync(0);
   }, 1);
-  setTimeout(() => {
-    board.speaker.writeSync(1);
-  }, 3);
-  setTimeout(() => {
-    board.speaker.writeSync(0);
-  }, 1);
 };
