@@ -1,16 +1,7 @@
 const Gpio = require("onoff").Gpio;
-const fs = require("fs");
 const colors = require("colors");
 
-console.log("Reading data from board.json...".blue.bold);
-let boardContents;
-try {
-  const content = fs.readFileSync("../config/board.json");
-  boardContents = JSON.parse(content);
-} catch (error) {
-  console.error("ERROR: Problem reading from board.json. Exiting".red.bold);
-  process.exit(1);
-}
+const boardContents = require("../config/board.json");
 
 board = {
   lights: {
