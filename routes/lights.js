@@ -5,7 +5,6 @@ const router = express.Router();
 
 // TODO authorize here...
 
-router.route("/").get(getLights);
-router.route("/:color/:status").put(setLight);
+router.route("/").get(getLights).put(setLight);
 
 module.exports = router;
