@@ -31,11 +31,12 @@ exports.setLight = asyncHandler(async (req, res, next) => {
       )
     );
   }
-  if (status.isNaN() || (status !== 0 && status !== 1)) {
-    return next(
-      new ErrorResponse(`Malformed request. Status must be 0 or 1`, 404)
-    );
-  }
+  // TODO real error handling here..
+  // if (status.isNaN() || (status !== 0 && status !== 1)) {
+  //   return next(
+  //     new ErrorResponse(`Malformed request. Status must be 0 or 1`, 404)
+  //   );
+  // }
   board.lights[color].writeSync(status);
   res.status(200).json({ success: true, data: board.lights[color].readSync() });
 });
