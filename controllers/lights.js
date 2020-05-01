@@ -23,7 +23,7 @@ exports.getLights = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.setLight = asyncHandler(async (req, res, next) => {
   const { status, color } = req.params;
-  if (!board[color]) {
+  if (!board.lights[color]) {
     return next(
       new ErrorResponse(
         `Could not access light with color ${req.params.color}`,
@@ -36,6 +36,6 @@ exports.setLight = asyncHandler(async (req, res, next) => {
       new ErrorResponse(`Malformed request. Status must be 0 or 1`, 404)
     );
   }
-  board[color].writeSync(status);
-  res.status(200).json({ success: true, data: board[color].readSync() });
+  board.lights[color].writeSync(status);
+  res.status(200).json({ success: true, data: board.lights[color].readSync() });
 });
