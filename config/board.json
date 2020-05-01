@@ -1,0 +1,14 @@
+{
+  "lights": {
+    "green": 25,
+    "red": 24,
+    "yellow": 6,
+    "blue": 5
+  },
+  "button": {
+    "port": 27
+  },
+  "speaker": {
+    "port": 17
+  }
+}

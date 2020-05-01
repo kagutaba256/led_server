@@ -1,15 +1,16 @@
-const express = require('express');
-const colors = require('colors');
+const express = require("express");
+const colors = require("colors");
 
 // Load env vars
-const dotenv = require('dotenv');
-dotenv.config({ path: './config/config.env' });
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/config.env" });
 
 // Route files
+const lights = require("./routes/lights");
 
 // Middleware
-const morgan = require('morgan');
-const errorHandler = require('./middleware/error');
+const morgan = require("morgan");
+const errorHandler = require("./middleware/error");
 
 const app = express();
 
@@ -17,11 +18,12 @@ const app = express();
 app.use(express.json());
 
 // Dev logging middleware
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
 }
 
 // Mount routers
+app.use("/api/v1/lights", lights);
 
 // Error handling
 app.use(errorHandler);
@@ -36,10 +38,10 @@ const server = app.listen(
 );
 
 // Handle unhandled promise rejections
-process.on('unhandledRejection', (err, promise) => {
+process.on("unhandledRejection", (err, promise) => {
   console.log(`Unhandled Promise Rejection: ${err.message}`.red);
   // Close server and exit process
   server.close(() => {
     process.exit(1);
-  })
+  });
 });
