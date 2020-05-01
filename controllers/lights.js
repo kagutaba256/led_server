@@ -10,10 +10,10 @@ const asyncHandler = require("../middleware/async");
 // @access  Public
 exports.getLights = asyncHandler(async (req, res, next) => {
   data = {
-    green: board.lights.green.getStatus(),
-    red: board.lights.red.getStatus(),
-    yellow: board.lights.yellow.getStatus(),
-    blue: board.lights.blue.getStatus(),
+    green: board.lights.green.readSync(),
+    red: board.lights.red.readSync(),
+    yellow: board.lights.yellow.readSync(),
+    blue: board.lights.blue.readSync(),
   };
   res.status(200).json({ success: true, data: data });
 });
