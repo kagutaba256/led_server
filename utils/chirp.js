@@ -1,4 +1,5 @@
 const board = require("./board");
+
 module.exports = () => {
   board.speaker.writeSync(1);
   setTimeout(() => {

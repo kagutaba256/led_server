@@ -8,5 +8,5 @@ const asyncHandler = require("../middleware/async");
 // @access  Private
 exports.playSound = asyncHandler(async (req, res, next) => {
   chirp();
-  res.status(200).json({ success: true, data: data });
+  res.status(200).json({ success: true });
 });
