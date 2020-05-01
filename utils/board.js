@@ -10,8 +10,9 @@ board = {
     yellow: new Gpio(boardContents.lights.yellow, "out"),
     blue: new Gpio(boardContents.lights.blue, "out"),
   },
-  button: new Gpio(boardContents.button, "in"),
-  speaker: new Gpio(boardContents.speaker, "in"),
+  // TODO add button and speaker support
+  //button: new Gpio(boardContents.button, "in"),
+  //speaker: new Gpio(boardContents.speaker, "out"),
 };
 
 module.exports = board;
