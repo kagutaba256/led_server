@@ -10,7 +10,7 @@ board = {
     yellow: new Gpio(boardContents.lights.yellow, "out"),
     blue: new Gpio(boardContents.lights.blue, "out"),
   },
-  speaker: new Gpio(boardContents.speaker, "out"),
+  speaker: boardContents.speaker,
 };
 
 module.exports = board;

@@ -6,15 +6,16 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 
 const chirp = () => {
-  board.speaker.writeSync(1);
+  speaker = new Gpio(board.speaker, "out");
+  speaker.writeSync(1);
   setTimeout(() => {
-    board.speaker.writeSync(0);
+    speaker.writeSync(0);
   }, 5);
   setTimeout(() => {
-    board.speaker.writeSync(1);
+    speaker.writeSync(1);
   }, 30);
   setTimeout(() => {
-    board.speaker.writeSync(0);
+    speaker.writeSync(0);
   }, 5);
 };
 
