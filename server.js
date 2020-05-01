@@ -7,6 +7,7 @@ dotenv.config({ path: "./config/config.env" });
 
 // Route files
 const lights = require("./routes/lights");
+const speaker = require("./routes/speaker");
 
 // Middleware
 const morgan = require("morgan");
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === "development") {
 
 // Mount routers
 app.use("/api/v1/lights", lights);
+app.use("/api/v1/speaker", speaker);
 
 // Error handling
 app.use(errorHandler);
