@@ -1,7 +1,5 @@
 const board = require("../utils/board");
 
-const Gpio = require("onoff");
-
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 

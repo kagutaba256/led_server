@@ -5,10 +5,5 @@
     "yellow": 6,
     "blue": 5
   },
-  "button": {
-    "port": 9
-  },
-  "speaker": {
-    "port": 17
-  }
+  "speaker": 17
 }
