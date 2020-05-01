@@ -9,6 +9,11 @@ const asyncHandler = require("../middleware/async");
 // @route   GET /api/v1/lights
 // @access  Public
 exports.getLights = asyncHandler(async (req, res, next) => {
-  data = board.lights.map(Gpio.readSync);
+  data = {
+    green: board.lights.green.getStatus(),
+    red: board.lights.red.getStatus(),
+    yellow: board.lights.yellow.getStatus(),
+    blue: board.lights.blue.getStatus(),
+  };
   res.status(200).json({ success: true, data: data });
 });
