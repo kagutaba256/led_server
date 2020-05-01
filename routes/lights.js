@@ -6,6 +6,6 @@ const router = express.Router();
 // TODO authorize here...
 
 router.route("/").get(getLights);
-router.route("/:color/:status", setLight);
+router.route("/:color/:status").put(setLight);
 
 module.exports = router;
