@@ -42,3 +42,40 @@ exports.setLight = asyncHandler(async (req, res, next) => {
   });
   res.status(200).json({ success: true, data: data });
 });
+
+// @desc    Blink on specific light.
+// @route   POST /api/v1/lights/
+// @access  Private
+exports.blinkLight = asyncHandler(async (req, res, next) => {
+  const { color } = light;
+  if (!board.lights[color]) {
+    return next(
+      new ErrorResponse(
+        `Could not access light with color ${req.params.color}`,
+        404
+      )
+    );
+  }
+  // TODO real error handling here..
+  // if (status.isNaN() || (status !== 0 && status !== 1)) {
+  //   return next(
+  //     new ErrorResponse(`Malformed request. Status must be 0 or 1`, 404)
+  //   );
+  // }
+  board.lights[color].writeSync(0);
+  await setTimeout(() => {
+    board.speaker.writeSync(1);
+  }, 1);
+  await setTimeout(() => {
+    board.speaker.writeSync(0);
+  }, 1);
+  await setTimeout(() => {
+    board.speaker.writeSync(1);
+  }, 1);
+  await setTimeout(() => {
+    board.speaker.writeSync(0);
+  }, 1);
+
+  data = board.lights[color].readSync();
+  res.status(200).json({ success: true, data: data });
+});

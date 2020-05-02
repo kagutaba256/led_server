@@ -1,6 +1,5 @@
 const chirp = require("../utils/chirp");
 
-const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 
 // @desc    Play chirp on speaker.
