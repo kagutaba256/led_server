@@ -63,16 +63,16 @@ exports.blinkLight = asyncHandler(async (req, res, next) => {
   //   );
   // }
   board.lights[color].writeSync(0);
-  await setTimeout(() => {
+  setTimeout(() => {
     board.speaker.writeSync(1);
   }, 1);
-  await setTimeout(() => {
+  setTimeout(() => {
     board.speaker.writeSync(0);
   }, 1);
-  await setTimeout(() => {
+  setTimeout(() => {
     board.speaker.writeSync(1);
   }, 1);
-  await setTimeout(() => {
+  setTimeout(() => {
     board.speaker.writeSync(0);
   }, 1);
 
